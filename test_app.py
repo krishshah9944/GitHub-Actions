@@ -12,24 +12,25 @@ def test_welcome_route(client):
     response = client.get("/")
     assert response.status_code == 200
     assert b"Welcome to the flask course" in response.data
-
+    
 def test_index_route(client):
     """Test the /index route"""
     response = client.get("/index")
     assert response.status_code == 200
-    assert b"index.html" in response.data  # Check if index.html is rendered
+    assert b"Welcome to My Flask App!" in response.data  # Check content, not filename
 
 def test_about_route(client):
     """Test the /about route"""
     response = client.get("/about")
     assert response.status_code == 200
-    assert b"about.html" in response.data  # Check if about.html is rendered
+    assert b"This is the about page" in response.data  # Check content, not filename
 
 def test_form_get(client):
     """Test the /form route with GET"""
     response = client.get("/form")
     assert response.status_code == 200
-    assert b"form.html" in response.data  # Check if form.html is rendered
+    assert b"<form" in response.data  # Check if form is present
+
 
 def test_form_post(client):
     """Test the /form route with POST"""

@@ -53,6 +53,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
+    need: build-and-publish
       uses: docker/build-push-action@v6.13.0
       with:
         context: .
